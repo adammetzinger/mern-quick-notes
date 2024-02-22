@@ -1,9 +1,12 @@
-export default function NotePage({ notes, user }) {
+import NewNoteForm from "../../components/NewNoteForm/NewNoteForm"
+
+export default function NotePage({ notes, handleCreateNote }) {
     return(
         <>
             <h1>Notes</h1>
-            {notes.length > 0 ? notes.map((m, idx) => (
-                <p key={idx}>{m.text}{m.createdAt.toLocalString}</p>
+            <NewNoteForm handleCreateNote={handleCreateNote} />
+            {notes.length ? notes.map((n, idx) => (
+                <p key={idx}>{n.text} {new Date(n.createdAt).toLocaleDateString()}</p>
             )) : <p>No Notes yet</p>}
         </>
     )

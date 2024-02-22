@@ -4,11 +4,12 @@ const Schema = mongoose.Schema;
 const noteSchema = new Schema({
     text: {
         type: String,
-        required
+        required: true
     },
     user: {
-        type: ObjectId,
-        required
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 }, {
     timestamps: true
